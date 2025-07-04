@@ -7,7 +7,8 @@ TFT_eSPI tft = TFT_eSPI();
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p) {
   tft.startWrite();
   tft.setAddrWindow(area->x1, area->y1, area->x2 - area->x1 + 1, area->y2 - area->y1 + 1);
-  tft.pushColors((uint16_t *)&color_p->full, (area->x2 - area->x1 + 1) * (area->y2 - area->y1 + 1), true);
+  tft.pushColors(reinterpret_cast<uint16_t *>(color_p),
+                 (area->x2 - area->x1 + 1) * (area->y2 - area->y1 + 1), true);
   tft.endWrite();
   lv_disp_flush_ready(disp);
 }
@@ -19,8 +20,8 @@ void setup() {
   tft.setRotation(1);
 
   static lv_disp_draw_buf_t draw_buf;
-  static lv_color_t buf1[240 * 10];
-  lv_disp_draw_buf_init(&draw_buf, buf1, NULL, 240 * 10);
+  static lv_color_t buf1[320 * 10];
+  lv_disp_draw_buf_init(&draw_buf, buf1, NULL, 320 * 10);
 
   static lv_disp_drv_t disp_drv;
   lv_disp_drv_init(&disp_drv);
@@ -36,6 +37,10 @@ void setup() {
 }
 
 void loop() {
+  static uint32_t last = millis();
+  uint32_t now = millis();
+  lv_tick_inc(now - last);
+  last = now;
   lv_timer_handler();
   delay(5);
 }
