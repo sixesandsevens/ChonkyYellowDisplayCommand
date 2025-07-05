@@ -1,13 +1,15 @@
+
 #include "config.hpp"
 #include <lvgl.h>
 #include <Arduino.h>
 #include <WiFi.h>
+#include "ui.hpp"  // To access UI::init
 
 namespace ConfigUI {
-  static lv_obj_t* config_screen;
-  static lv_obj_t* wifi_screen;
-  static lv_obj_t* ssid_input;
-  static lv_obj_t* pass_input;
+  static lv_obj_t* config_screen = nullptr;
+  static lv_obj_t* wifi_screen = nullptr;
+  lv_obj_t* ssid_input = nullptr;
+  lv_obj_t* pass_input = nullptr;
 
   void handle_back_button(lv_event_t* e);
 
@@ -20,6 +22,12 @@ namespace ConfigUI {
   }
 
   void show_wifi_input_screen() {
+    if (config_screen) {
+      lv_obj_del(config_screen);
+      config_screen = nullptr;
+    }
+
+    if (wifi_screen) lv_obj_del(wifi_screen);
     wifi_screen = lv_obj_create(NULL);
     lv_obj_set_style_bg_color(wifi_screen, lv_color_black(), LV_PART_MAIN);
 
@@ -62,18 +70,19 @@ namespace ConfigUI {
 
   void handle_theme_toggle(lv_event_t* e) {
     Serial.println("[Theme] Toggle theme pressed");
-    // TODO: swap global UI_COLOR and re-apply styles
   }
 
   void handle_time_sync(lv_event_t* e) {
     Serial.println("[Time] Sync time pressed");
-    // TODO: trigger NTP or RTC fetch
   }
 
   void handle_back_button(lv_event_t* e) {
     Serial.println("[Config] Back to main screen");
-    extern void return_to_main_screen();
-    return_to_main_screen();
+    if (wifi_screen) {
+      lv_obj_del(wifi_screen);
+      wifi_screen = nullptr;
+    }
+    UI::init();
   }
 
   void create_config_button(const char* label_text, lv_align_t align, lv_coord_t y_ofs, lv_event_cb_t cb) {
@@ -86,6 +95,13 @@ namespace ConfigUI {
   }
 
   void init() {
+    if (wifi_screen) {
+      lv_obj_del(wifi_screen);
+      wifi_screen = nullptr;
+    }
+    if (config_screen) {
+      lv_obj_del(config_screen);
+    }
     config_screen = lv_obj_create(NULL);
     lv_obj_set_style_bg_color(config_screen, lv_color_black(), LV_PART_MAIN);
 
@@ -93,10 +109,11 @@ namespace ConfigUI {
     create_config_button("Toggle Theme", LV_ALIGN_TOP_MID, 70, handle_theme_toggle);
     create_config_button("Sync Time", LV_ALIGN_TOP_MID, 120, handle_time_sync);
     create_config_button("← Back", LV_ALIGN_BOTTOM_MID, -20, handle_back_button);
+
+    lv_scr_load(config_screen);
   }
 
   void show() {
-    if (!config_screen) init();
-    lv_scr_load(config_screen);
+    init();
   }
 }
