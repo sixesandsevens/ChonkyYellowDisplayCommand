@@ -70,3 +70,13 @@ The following table summarizes GPIO functionality. Note that this **does not** c
 | 35 | ☒ | ☐ | ☐ | ADC1_CH7, RTC_GPIO5 |
 | 36 | ☒ | ☐ | ☐ | ADC1_CH0, RTC_GPIO0 |
 | 39 | ☒ | ☐ | ☐ | ADC1_CH3, RTC_GPIO3 |
+
+## Backlight control
+
+The built-in board support package expects the LCD backlight to be driven on **GPIO27**. If your board variant leaves the display dark after flashing, explicitly enabling the backlight in firmware can help:
+
+```cpp
+bsp::ESP323248S035C<Main>::set_backlight(255);
+```
+
+This call sets the PWM duty cycle to 100%, ensuring the display is illuminated.
