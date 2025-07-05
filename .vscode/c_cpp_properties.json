@@ -10,9 +10,6 @@
             "includePath": [
                 "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/include",
                 "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/src",
-                "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/lib/ESP323248S035",
-                "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
-                "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/.pio/libdeps/esp32-3248s035/cronos/include",
                 "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/.pio/libdeps/esp32-3248s035/cronos",
@@ -218,6 +215,7 @@
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/variants/esp32",
+                "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/lib/ESP323248S035",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -239,11 +237,13 @@
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
+                "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
+                "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 ""
             ],
             "browse": {
@@ -251,9 +251,6 @@
                 "path": [
                     "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/include",
                     "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/src",
-                    "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/lib/ESP323248S035",
-                    "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
-                    "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/.pio/libdeps/esp32-3248s035/cronos/include",
                     "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/.pio/libdeps/esp32-3248s035/cronos",
@@ -459,6 +456,7 @@
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/variants/esp32",
+                    "/home/sixesandsevens/Documents/PlatformIO/Projects/ChonkyYellowDisplayCommand/lib/ESP323248S035",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -480,11 +478,13 @@
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
+                    "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
+                    "/home/sixesandsevens/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     ""
                 ]
             },
