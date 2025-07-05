@@ -25,6 +25,8 @@ void setup() {
     configTime(0, 0, "pool.ntp.org", "time.nist.gov");
 
     target.init();                 // Init LVGL, display, and input
+    // Ensure the LCD backlight is fully enabled
+    bsp::ESP323248S035C<Main>::set_backlight(255);
     lv_obj_clean(lv_scr_act());   // Clear splash screen
     UI::init();                   // Create main interface (now includes config button)
 
