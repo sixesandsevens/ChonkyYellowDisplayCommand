@@ -70,3 +70,15 @@ The following table summarizes GPIO functionality. Note that this **does not** c
 | 35 | ☒ | ☐ | ☐ | ADC1_CH7, RTC_GPIO5 |
 | 36 | ☒ | ☐ | ☐ | ADC1_CH0, RTC_GPIO0 |
 | 39 | ☒ | ☐ | ☐ | ADC1_CH3, RTC_GPIO3 |
+
+## Backlight control
+
+The LCD backlight is typically connected to **GPIO27**. On some boards it may default to an "off" state. The backlight can be enabled using the ESP32's LEDC PWM driver:
+
+```cpp
+ledcSetup(0, 5000, 8);      // channel, frequency, resolution
+ledcAttachPin(27, 0);
+ledcWrite(0, 255);          // full brightness
+```
+
+These calls should run after `target.init()` so that the display is visible.
