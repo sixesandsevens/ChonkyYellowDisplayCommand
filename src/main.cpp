@@ -1,6 +1,7 @@
 #include "main.hpp"
 #include "ui.hpp"
 #include <ESP323248S035.hpp>
+#include <Arduino.h>
 #include <time.h>  // ⏰ Real time support
 #include <esp_heap_caps.h>
 #include <esp_system.h>
@@ -26,7 +27,14 @@ void setup() {
 
     target.init();                 // Init LVGL, display, and input
     // Ensure the LCD backlight is fully enabled
-    bsp::ESP323248S035C<Main>::set_backlight(255);
+    const int backlightPin = 27;
+    const int backlightChannel = 0;
+    const int backlightFreq = 5000;
+    const int backlightResolution = 8;
+
+    ledcSetup(backlightChannel, backlightFreq, backlightResolution);
+    ledcAttachPin(backlightPin, backlightChannel);
+    ledcWrite(backlightChannel, 255);
     lv_obj_clean(lv_scr_act());   // Clear splash screen
     UI::init();                   // Create main interface (now includes config button)
 
@@ -64,45 +72,3 @@ void loop() {
     }
 }
 
-template<>
-const bsp::TPC_LCD<
-  bsp::Atomic<std::mutex, std::unique_lock<std::mutex>>,
-  bsp::SPIImpl<SPIClass>,
-  bsp::I2CImpl<TwoWire>
->::log_type bsp::TPC_LCD<
-  bsp::Atomic<std::mutex, std::unique_lock<std::mutex>>,
-  bsp::SPIImpl<SPIClass>,
-  bsp::I2CImpl<TwoWire>
->::log = [](lv_log_level_t ll, const char *msg) {
-  static const char *pre[LV_LOG_LEVEL_NUM] = {
-    "[-] ", // TRACE
-    "[=] ", // INFO
-    "[~] ", // WARN
-    "[!] ", // ERROR
-    "[+] "  // USER
-  };
-  unsigned level = static_cast<unsigned>(ll);
-  if (level < LV_LOG_LEVEL_NONE) {
-    Serial.print(pre[level]);
-  }
-  Serial.println(msg);
-};
-
-
-#if (LV_USE_LOG)
-// Optional logging hook
-extern "C" void my_lv_log_cb(lv_log_level_t ll, const char *msg) {
-  static const char *pre[LV_LOG_LEVEL_NUM] = {
-    "[-] ", // TRACE
-    "[=] ", // INFO
-    "[~] ", // WARN
-    "[!] ", // ERROR
-    "[+] "  // USER
-  };
-  unsigned level = static_cast<unsigned>(ll);
-  if (level < LV_LOG_LEVEL_NONE) {
-    Serial.print(pre[level]);
-  }
-  Serial.println(msg);
-}
-#endif

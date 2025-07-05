@@ -2,6 +2,7 @@
 
 #include <ESP323248S035.hpp>
 #include <esp_system.h>
+#include <Arduino.h>
 
 
 // The ESP32-3248S035 library defines View as a pure virtual class, which acts

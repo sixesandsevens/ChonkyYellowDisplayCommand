@@ -73,10 +73,12 @@ The following table summarizes GPIO functionality. Note that this **does not** c
 
 ## Backlight control
 
-The built-in board support package expects the LCD backlight to be driven on **GPIO27**. If your board variant leaves the display dark after flashing, explicitly enabling the backlight in firmware can help:
+The LCD backlight is typically connected to **GPIO27**. On some boards it may default to an "off" state. The backlight can be enabled using the ESP32's LEDC PWM driver:
 
 ```cpp
-bsp::ESP323248S035C<Main>::set_backlight(255);
+ledcSetup(0, 5000, 8);      // channel, frequency, resolution
+ledcAttachPin(27, 0);
+ledcWrite(0, 255);          // full brightness
 ```
 
-This call sets the PWM duty cycle to 100%, ensuring the display is illuminated.
+These calls should run after `target.init()` so that the display is visible.
